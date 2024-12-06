@@ -71,20 +71,6 @@ export function ProductGrid({ cartItems, setCartItems, selectedCategory }: Produ
     })
   }
 
-  const removeFromCart = (productId: number) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === productId)
-      if (existingItem && existingItem.quantity > 1) {
-        return prevItems.map(item =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-      }
-      return prevItems.filter(item => item.id !== productId)
-    })
-  }
-
   const getItemQuantity = (productId: number) => {
     return cartItems.find(item => item.id === productId)?.quantity || 0
   }
