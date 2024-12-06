@@ -81,30 +81,29 @@ export function ProductGrid({ cartItems, setCartItems, selectedCategory }: Produ
         const quantity = getItemQuantity(product.id)
         
         return (
-          <Card key={product.id}>
+          <Card key={product.id} className="bg-pink-50 hover:bg-pink-100/80 transition-colors">
             <CardContent className="p-4">
-              <div className="flex space-x-4">
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-1">{product.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">{product.description}</p>
-                  <p className="font-medium">{product.price}</p>
+              <div className="flex justify-between items-center gap-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <p className="text-lg font-medium text-gray-600">Rs. {product.price}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-1">{product.description}</p>
                 </div>
-                <div className="relative w-24 h-24">
+                <div className="relative w-24 h-24 flex-shrink-0">
                   <Image
                     src={product.image || '/placeholder.svg'}
                     alt={product.name}
                     width={96}
                     height={96}
-                    className="rounded-lg object-cover"
+                    className="rounded-lg object-cover w-full h-full"
                   />
                   {quantity === 0 ? (
-                    <Button
-                      size="icon"
-                      className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full shadow-lg"
+                    <button
                       onClick={() => addToCart(product)}
+                      className="absolute -bottom-2 -right-2 h-7 w-7 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50"
                     >
                       <Plus className="h-4 w-4" />
-                    </Button>
+                    </button>
                   ) : (
                     <div className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-medium shadow-lg">
                       {quantity}
