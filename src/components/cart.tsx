@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from "react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ShoppingBasket, Minus, Plus } from 'lucide-react'
 import { CartItem } from "./product-grid"
+import Image from 'next/image'
 
 interface CartProps {
   items: CartItem[]
@@ -54,10 +54,12 @@ export function Cart({ items, addToCart, removeFromCart, isMobile }: CartProps) 
                   {items.map((item) => (
                     <div key={item.id} className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <img
-                          src={item.image}
+                        <Image
+                          src={item.image || '/placeholder.svg'}
                           alt={item.name}
-                          className="w-12 h-12 rounded-lg object-cover"
+                          width={48}
+                          height={48}
+                          className="rounded-lg object-cover"
                         />
                         <div>
                           <h3 className="font-medium">{item.name}</h3>
@@ -116,10 +118,12 @@ export function Cart({ items, addToCart, removeFromCart, isMobile }: CartProps) 
             {items.map((item) => (
               <div key={item.id} className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <img
-                    src={item.image}
+                  <Image
+                    src={item.image || '/placeholder.svg'}
                     alt={item.name}
-                    className="w-12 h-12 rounded-lg object-cover"
+                    width={48}
+                    height={48}
+                    className="rounded-lg object-cover"
                   />
                   <div>
                     <h3 className="font-medium">{item.name}</h3>

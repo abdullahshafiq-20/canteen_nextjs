@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Plus, Minus } from 'lucide-react'
-import { useState } from 'react'
+import { Plus } from 'lucide-react'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -104,10 +104,12 @@ export function ProductGrid({ cartItems, setCartItems, selectedCategory }: Produ
                   <p className="font-medium">{product.price}</p>
                 </div>
                 <div className="relative w-24 h-24">
-                  <img
-                    src={product.image}
+                  <Image
+                    src={product.image || '/placeholder.svg'}
                     alt={product.name}
-                    className="rounded-lg object-cover w-full h-full"
+                    width={96}
+                    height={96}
+                    className="rounded-lg object-cover"
                   />
                   {quantity === 0 ? (
                     <Button
